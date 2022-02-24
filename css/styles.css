@@ -1,0 +1,162 @@
+
+html {
+    background-color:rgba(211, 211, 211, 0.514);
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+h1 {
+    font-size: 3rem;
+}
+h2{
+    font-size: 2.5rem;
+    text-align:center;
+}
+
+h3 {
+    font-size: 1.5rem; 
+    text-align:center;
+}
+h4 {
+    font-style: italic;
+    font-size: 1.5rem; 
+}
+/**NAVIGATION BAR**/
+
+.menu{
+    display: table;  
+	margin: 0 auto;
+}
+
+.menu ul{
+    display: flex;
+    justify-content:center;
+    
+}
+.menu li{
+    list-style-type: none;
+    margin-left: 5rem;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(1, 109, 231);
+}
+
+.menu a:active {
+    color: white;
+}
+
+/**DESCRIPCIÓN DE BASE DE DATOS**/
+.descripcion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    margin: 0 auto;
+}
+
+
+/**IMÁGENES DE TABLA**/
+.ejTabla {
+    display: flex;
+    flex-direction:column;
+}
+
+.ejTabla img {
+    max-width: 70%;
+    margin-left: 4rem;
+    margin-right:4rem;
+    margin: 0 auto;
+}
+
+/**INTEGRANTES**/
+.integrantes {
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    margin-top: 3rem;
+}
+
+.integrantes__persona img {
+    max-width: 20rem;
+    border-radius:100%;
+}
+
+.integrantes__persona{
+    display: flex;
+    flex-direction: column;
+    text-align:center;
+    margin-right:2rem;
+}
+table, td{
+    border: 1px solid;
+    border-collapse: collapse;
+    padding: 10px;
+}
+caption{
+    padding: 10px;
+    font-size: 2rem;
+    font-style: italic;
+}
+
+header{
+    background: rgba(211, 211, 211);
+    width: 100%;
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    padding: 0 2.25rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    min-height: 5.875rem;
+    border-bottom: 1px solid rgba(211, 211, 211, 0.514);
+}
+body{
+    font-size: 16px; /* 1rem = 10px*/
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+}
+section.portada{
+    margin-top: 5.875rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/f/fb/Light_blue.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+section.portada h2{
+    justify-content: center;
+    text-shadow: #fff 2px 2px 1px;
+}
+
+/**FOOTER**/
+footer{
+    background-color: #0096c7;
+    text-align: center;
+    justify-content: center;
+    height: 8rem;
+}
+
+footer p{
+    padding-top: 2.8rem;
+}
