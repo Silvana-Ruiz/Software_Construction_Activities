@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Base de Datos Aeropuerto</title>
+    
+</head>
+<body>
+    <header>
+        <div class="menu"">
+            <ul>
+                <li><a href="#portada">Portada</a></li>
+                <li><a href="#descripcion">Descripcion BD</a></li>
+                <li><a href="#tablas">Atributos de las Tablas</a></li>
+                <li><a href="#imgTablas">Imagenes de Tablas</a></li>
+                <li><a href="#integrantes">Integrantes</a></li>
+            </ul>
+
+        </div>
+    </header>
+    <section class="portada" id="portada">
+        <h1>
+            Actividad 1 - BD - Equipos <br/>
+            Construcción de software y toma de decisiones (Gpo 401) <br/>
+            Módulo 1. Bases de datos
+        </h1>
+    </section>
+    <section class="descripcion" id="descripcion">
+        <h2>Objetivo</h2>
+        <p>
+            Crear una base de datos para relacionar los vuelos con los pasajeros del Aeropuerto Borregos.
+        </p>
+        <img src="https://cdn2.civitatis.com/estados-unidos/las-vegas/guia/aeropuerto-mccarran.jpg">
+        <h2>Nombre</h2>
+        <p>
+            <em>Aeropuerto borregos</em></br>
+            El cliente solicitó ser claros y concisos con los nombres tanto de las tablas como de sus atributos.
+        </p>
+        <h2>Tablas</h2>
+        <p>
+            <ol>
+                <li>Vuelo</li>
+                <li>Pasajero</li>
+            </ol>
+            Se utilizaron dos tablas, una para almacenar los datos de los vuelos ofrecidos y otra para la de los pasajeros en el Aeropuerto Borregos. La primera contiene las características que comparten todos los pasajeros que abordan tal vuelo como el modelo del avión, puerta de abordaje, tiempo y terminal de partida y llegada.
+            Por otra parte, en la tabla de pasajero se almacenan los datos únicos de cada pasajero, es decir, lo que puede personalizar de su experiencia de vuelo de acuerdo a sus necesidades
+            como la clase, si es que tendrá retorno, el número de su asiento y el id del vuelo mediante el cual viajarán.
+        </p>
+        <img src="https://www.datocms-assets.com/14946/1627286560-sql-databases.png?auto=format">
+        <h2> Dato para relacionar vuelo-pasajero: <em>idvuelo</em> </h2>
+        <p>Buscamos un dato en común entre el pasajero y el vuelo para relacionar las tablas, y este fue el identificador del vuelo (idvuelo), pues, es el vuelo que abordará el pasajero. idvuelo es llave primaria en vuelo y foránea en pasajero</p>
+        <div class="tabla" id="tablas">
+            <table>
+                <caption>vuelo</caption>
+                
+                <!--Tabla vuelo descripción-->
+                <tr> <!--Esto es una row-->
+                    <td>Atributo</td> <!--Esto es una columna-->
+                    <td>Tipo de Dato</td>
+                    <td>Justificación</td>
+                </tr>
+                <tr>
+                    <td>idvuelo</td>
+                    <td>MEDIUMINT(9)</td>
+                    <td>Este dato es de tipo MEDIUMINT(9) y es autoincremental, es decir, va aumentando de manera automática cada que se agregue un vuelo nuevo. Nos sirve para identificar los vuelos. Este campo es NOT NULL, requiere que sea llenado con un valor. Esta es la primary key de la tabla.</td>
+                </tr>
+                <tr>
+                    <td>modelavion</td>
+                    <td>VARCHAR(4)</td>
+                    <td> Este atributo consiste de una combinación de una letra mayúscula y tres números enteros, por lo que, se utilizó una cadena VARCHAR(4) para permitir tener la combinación de letras con números y limitarla a una extensión de cuatro caracteres. Este nos indica el modelo del avión que realizará el vuelo en cuestión. Este campo es NOT NULL, requiere que sea llenado con un valor. </td>
+                </tr>
+                <tr>
+                    <td>salida</td>
+                    <td>DATETIME</td>
+                    <td>El atributo es de tipo DATETIME, lo que guarda la fecha y hora en la que el vuelo sale del aeropuerto. Se registra en el formato YYYY-MM-DD hh:mm:ss. Se utilizó DATETIME en vez de TIMESTAMP ya que el primero almacena un valor específico definido para la fecha y hora; en cambio, TIMESTAMP almacena el tiempo actual en el que se modifica el record. Este campo es NOT NULL, requiere que sea llenado con un valor.
+                    </td>
+                </tr>
+                <tr>
+                    <td>llegada</td>
+                    <td>DATETIME</td>
+                    <td>El atributo es de tipo DATETIME, lo que guarda la fecha y hora en la que el vuelo llega a su destino. Se registra en el formato YYYY-MM-DD hh:mm:ss. Se utilizó DATETIME sobre TIMESTAMP ya que el primero almacena un valor específico definido para la fecha y hora; en cambio, TIMESTAMP almacena el tiempo actual en el que se modificó el record. Este campo es NOT NULL, requiere que sea llenado con un valor.
+                    </td>
+                </tr>
+                <tr>
+                    <td>aerolinea</td>
+                    <td>VARCHAR(20)</td>
+                    <td>La aerolínea es un atributo de tipo VARCHAR(20), permitiendo guardar una cadena de caracteres (en este caso el nombre de las aerolíneas) de una longitud máxima de 20. Este campo es NOT NULL, requiere que sea llenado con un valor.
+                    </td>
+                </tr>
+                <tr>
+                    <td>terpartida</td>
+                    <td>TINYINT</td>
+                    <td>Este atributo es un TINYINT, ya que guardará el número de la terminal de la que partirá el avión y este no será mayor a 127. Este campo es NOT NULL, requiere que sea llenado con un valor.
+                    </td>
+                </tr>
+                <tr>
+                    <td>terllegada</td>
+                    <td>TINYINT</td>
+                    <td>Este atributo es un TINYINT, ya que guardará el número de la terminal de llegada del avión y este no será mayor a 127 (Maximum value signed). Este campo es NOT NULL, requiere que sea llenado con un valor.
+                    </td>
+                </tr>
+                <tr>
+                    <td>retraso</td>
+                    <td>BOOL</td>
+                    <td>Es de tipo BOOL, ya que solamente guardará un 1 o un 0, indicando si el vuelo viene retrasado o no, respectivamente. Este campo es NOT NULL, requiere que sea llenado con un valor.</td>
+                </tr>
+                <tr>
+                    <td>puerta</td>
+                    <td>TINYINT</td>
+                    <td>La puerta es de tipo TINYINT, ya que este número no superará 127 (Maximum value signed). Este atributo es la puerta de abordaje. Este campo es NOT NULL, requiere que sea llenado con un valor.
+                    </td>
+                </tr>
+                
+                <!--Tabla pasejero descripción-->
+                
+            </table>
+            
+            <table>
+                <caption>pasajero</caption>
+                <tr>
+                    <td>idvuelo</td>
+                    <td>MEDIUMINT</td>
+                    <td>Es un MEDIUMINT, nos sirve para identificar en qué vuelo estará el pasajero. Este campo es NOT NULL, por lo tanto siempre se asignará un valor al atributo. Esta es la foreign key que se utiliza </td>
+                </tr>
+                <tr>
+                    <td>nombrepasajero</td>
+                    <td>VARCHAR(30)</td>
+                    <td>Es un VARCHAR(30), ya que la longitud de los nombres de los pasajeros puede variar y su propósito es saber el nombre de las personas que abordan los vuelos. Este campo es NOT NULL, por lo tanto siempre se asignará un valor al atributo.
+                    </td>
+                </tr>
+                <tr>
+                    <td>clase</td>
+                    <td>VARCHAR(3)</td>
+                    <td>Se utilizara una abreviatura para la clase de asiento, esto indicará en qué sección del avión se sentará el pasajero. Este campo es NOT NULL, por lo tanto siempre se asignará un valor al atributo.
+                    </td>
+                </tr>
+                <tr>
+                    <td>retorno</td>
+                    <td>BOOL ó TINYINT(1)</td>
+                    <td>Es un BOOL, ya que solo queremos saber si el pasajero regresará o no.Este campo es NOT NULL, por lo tanto siempre se asignará un valor al atributo.
+                    </td>
+                </tr>
+                <tr>
+                    <td>asiento</td>
+                    <td>VARCHAR(3)</td>
+                    <td> se utilizaran solo 3 datos, dos números para indicar la fila y la letra para el asiento de dicho pasajero. Este campo es NOT NULL, por lo tanto siempre se asignará un valor al atributo.</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <section class="imgTablas" id="imgTablas">
+        <h2>Capturas de Tablas</h2>
+        <div class="ejTabla">
+            <h3>Estructura tabla vuelo</h3>
+            <img src="img/t1.png" alt="Tabla vuelo"> </br>
+            
+            <h3>Tabla vuelo llenada</h3>
+            <img src="img/t3.png" alt="Tabla vuelo llena">
+            
+            <h3>Estructura de tabla pasajero</h3>
+            <img src="img/t2.png" alt="Tabla pasajero"> </br>
+            
+            <h3>Tabla pasajero llenada</h3>
+            <img src="img/t4.png" alt="Tabla vuelo llena">
+            
+        </div>
+    </section>
+    <h2>Integrantes</h2>
+    <section class="integrantes" id="integrantes"">
+        
+        <div class="integrantes__persona">
+            <img src="img/i1.jpeg">
+            <div class="integrantes__img__texto">
+                <h4>Alam López</h4>
+                <p>A01252135</p>
+            </div>
+        </div>
+        <div class="integrantes__persona">
+            <img src="img/i2.jpeg" alt="Alan Muñoz">
+            <div class="integrantes__img__texto">
+                <h4>Alan Muñoz</h4>
+                <p>A01252054</p>
+            </div>
+        </div>
+        <div class="integrantes__persona">
+            <img src="img/i3.jpeg" alt="Fernando Mendivil">
+            <div class="integrantes__img__texto">
+                <h4>Fernando Mendivil</h4>
+                <p>A00232280</p>
+            </div>
+        </div>
+        <div class="integrantes__persona">
+            <img src="img/i4.jpg" alt="Silvana Ruiz">
+            <div class="integrantes__img__texto">
+                <h4>Silvana Ruiz</h4>
+                <p>A01252346</p>
+            </div>
+        </div>
+    </section>
+    <!--
+    <section class="gridcontent">
+        <div class="gridcontent__textogrid">
+            <h3>Objetivo</h3>
+            <p>
+                Crear una base de datos para relacionar los vuelos con los pasajeros <br/>
+                del Aeropuerto Borregos.
+            </p>
+
+        </div>
+        <div class="gridcontent__imggrid">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Seoul_Incheon_Airport_%2827833094934%29.jpg/1280px-Seoul_Incheon_Airport_%2827833094934%29.jpg" alt="">
+        </div>
+
+        <div class="gridcontent__imggrid">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Seoul_Incheon_Airport_%2827833094934%29.jpg/1280px-Seoul_Incheon_Airport_%2827833094934%29.jpg" alt="">
+        </div>
+        <div class="gridcontent__textogrid"">
+            <h3>Nombre</h3>
+            <p>
+                <em>Aeropuerto borregos</em></br>
+                El cliente solicitó ser claros y concisos con los nombres tanto de las tablas como de sus atributos.
+            </p>
+        </div>
+
+        <div class="gridcontent__textogrid">
+            <h3>Tablas</h3>
+            <p>
+                <ol>
+                    <li>Vuelo</li>
+                    <li>Pasajero</li>
+                </ol>
+                Se utilizaron dos tablas, una para almacenar los datos de los vuelos ofrecidos y otra para la de los pasajeros en el Aeropuerto Borregos. La primera contiene las características que comparten todos los pasajeros que abordan tal vuelo como el modelo del avión, puerta de abordaje, tiempo y terminal de partida y llegada.
+                Por otra parte, en la tabla de pasajero se almacenan los datos únicos de cada pasajero, es decir, lo que puede personalizar de su experiencia de vuelo de acuerdo a sus necesidades
+                como la clase, si es que tendrá retorno, el número de su asiento y el id del vuelo mediante el cual viajarán.
+            </p>
+
+        </div>
+        <div class="gridcontent__imggrid">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Seoul_Incheon_Airport_%2827833094934%29.jpg/1280px-Seoul_Incheon_Airport_%2827833094934%29.jpg" alt="">
+        </div>
+    </section>
+    --> <!--gridcontent section-->
+    
+</body>
+<footer>
+    <p>Desarrollado por el equipo 1. Copyright 2022</p>
+</footer>
+</html>
